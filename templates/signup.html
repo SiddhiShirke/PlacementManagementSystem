@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block pagetitle %}Sign Up{% endblock pagetitle %}
+
+{% block portalname %}
+<a class="navbar-brand navbarText" href="/">Campus Placement </a>
+{% endblock %}
+
+{% block homecss %}
+<link rel="stylesheet" href="{% static 'css/form.css' %}">
+{% endblock homecss %}
+
+{% block navbarbutton %}
+  <li class="nav-item mr-2">
+    <a class="navlink btn btn-outline-light" href="/signin" >Login</a>
+  </li>            
+{% endblock navbarbutton %}
+
+<!-- Main body-signup registration_form -->
+{% block content %}
+<div class="box">
+  <h1>Register Form</h1>
+  <form method="POST">
+      {% csrf_token%}
+      {{form1.as_p}}
+  <input type="submit" value="SUBMIT">
+</form>
+<p>Already have an account?<a  style="text-decoration: none" href="/signin">Login here</a></p>
+</div>
+{% endblock content %}
+
+{% block footerc %}
+  <div class="footer-copyright text-center py-3">© 2023 Copyright:
+    <br><a href="#">Registration Page</a>
+  </div>
+{% endblock footerc %}

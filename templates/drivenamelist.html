@@ -1,0 +1,38 @@
+{% extends 'coordinatorSection.html' %}
+{% load static %}
+
+{% block homecss %}
+
+
+{% endblock homecss %}
+
+
+{% block rightside %}
+<head>
+
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<BR>
+<div class="box">
+    <h1>Company List </h1>
+    <table border="1">
+    <form method="POST">
+        <th>Company Names</th>
+        {% for i in comp %}
+        <tr><td>
+            <a href="elligible/{{i.id}}">{{i.company_name}}</a>
+        </td></tr>
+        {% endfor %}
+    </form>
+    </table>
+</div>
+{% endblock rightside %}
+
+
+{% block footerc %}
+
+<div class="footer-copyright text-center py-3">© 2023 Copyright:
+  <br><a href="#">Company Details Form</a>
+</div>
+{% endblock footerc %}

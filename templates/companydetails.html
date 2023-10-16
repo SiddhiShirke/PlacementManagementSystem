@@ -1,0 +1,44 @@
+{% extends 'coordinatorSection.html' %}
+{% load static %}
+
+{% block homecss %}
+<head>
+
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+  <!-- Fengyuan Chen's Datepicker -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.css" integrity="sha256-b88RdwbRJEzRx95nCuuva+hO5ExvXXnpX+78h8DjyOE=" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.js" integrity="sha256-/7FLTdzP6CfC1VBAj/rsp3Rinuuu9leMRGd354hvk0k=" crossorigin="anonymous"></script>
+
+  <script>
+    $(function () {
+      $("#id_last_date_of_applying").datepicker();
+    });
+ $(function () {
+      $("#id_date_of_interview").datepicker();
+    });
+
+  </script>
+</head>
+{% endblock homecss %}
+
+
+{% block rightside %}
+<div class="box">
+    <h1>Company Details Form</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" value="POST">
+    </form>
+</div>
+{% endblock rightside %}
+
+
+{% block footerc %}
+  
+<div class="footer-copyright text-center py-3">© 2023 Copyright:
+  <br><a href="#">Company Details Form</a>
+</div>
+{% endblock footerc %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block pagetitle %}DashBoard{% endblock pagetitle %}
+
+{% block portalname %}
+<a class="navbar-brand navbarText" href="/">Campus Placement </a>
+{% endblock %}
+
+{% block homecss %}
+<link rel="stylesheet" href="{% static 'css/form.css' %}">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4"></script>
+{% endblock homecss %}
+
+{% block content %}
+<body>
+<br> <br> <br> <br>
+<img src="data:image/png;base64,{{ pie_chart }}" alt="Pie Chart">
+<img src="data:image/png;base64,{{ softskillpie }}" alt="Pie Chart">
+
+</body>
+{% endblock content %}
+
+{% block footerc %}
+  <div class="footer-copyright text-center py-3">© 2023 Copyright:
+    <br><a href="#">Registration Page</a>
+  </div>
+{% endblock footerc %}

@@ -1,0 +1,36 @@
+{% extends 'coordinatorSection.html' %}
+{% load static %}
+
+{% block rightside %}
+<div>
+    {% if data %}
+        <h1>Applied Student List</h1><br>
+        <table class="styled-table">
+            <thead>
+            <th>Student Name</th>
+            <th>Company Name</th>
+            <th>Applied Date</th>
+            </thead>
+            <tbody>
+                {% for i in data %}
+                <tr class="active-row">
+                    <td>{{i.user}}</td>
+                    <td>{{i.company}}</td>
+                    <td>{{i.applied_date }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+    <div class="box">
+    <h1>No Student Has Applied Yet!!!</h1>
+    {% endif %}
+    </div>
+    
+</div>
+{% endblock rightside %}
+
+<div class="footer">
+  <div class="footer-copyright text-center py-3">© 2023 Copyright:
+  </div>
+</div>

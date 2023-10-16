@@ -1,0 +1,19 @@
+{% extends 'studentSection.html' %}
+{% load static %}
+
+{% block rightside %}
+    <div class="box">
+    <h1>Student Data Form</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" value="SAVE">
+    </form>
+    </div>
+{% endblock rightside %}
+
+{% block footerc %}
+  <div class="footer-copyright text-center py-3">© 2023 Copyright:
+    <br><a href="#">Student Data Page</a>
+  </div>
+{% endblock footerc %}

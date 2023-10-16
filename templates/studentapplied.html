@@ -1,0 +1,34 @@
+{% extends 'studentSection.html' %}
+{% load static %}
+
+{% block rightside %}
+
+    <h1>Applied Drives List</h1>
+
+<table class="styled-table">
+  <thead>
+    <th>Company Name</th>
+    <th>Applied Date</th> 
+    <th>Interview Date</th>
+  </thead>  
+<tbody>  
+{% for i in data %}
+    <tr class="active-row">
+        <td>{{i.company}}</td>
+        <td>{{i.applied_date}}</td>
+        <td>{{i.company.date_of_interview}}</td>
+      </tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+{% endblock rightside %}
+
+
+{% block footerc %}
+  <div class="footer-copyright text-center py-3">© 2023 Copyright:
+
+    <br><a href="#">Student Data Page</a>
+  </div>
+
+{% endblock footerc %}

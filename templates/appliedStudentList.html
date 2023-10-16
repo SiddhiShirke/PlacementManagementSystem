@@ -1,0 +1,33 @@
+{% extends 'coordinatorSection.html' %}
+{% load static %}
+
+
+{% block rightside %}
+    <h1>Applied Student List</h1><br>
+    <table class="styled-table">
+      <thead>
+        <th>Student Name</th>
+        <th>Company Name</th>
+        <th>Applied Date</th>
+      </thead>
+
+      <tbody>
+        {% for i in data %}
+        <tr class="active-row">
+            <td>
+                {{i.user}}
+            </td>
+            <td>{{i.company}}</td>
+            <td>{{i.applied_date }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+        
+    </table>
+{% endblock rightside %}
+
+{% block footerc %}
+<div class="footer-copyright text-center py-3">© 2023 Copyright:
+  <br><a href="#">Applied Students List</a>
+</div>
+{% endblock footerc %}

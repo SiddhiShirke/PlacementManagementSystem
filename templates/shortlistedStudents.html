@@ -1,0 +1,50 @@
+{% extends 'coordinatorSection.html' %}
+{% load static %}
+
+{% block homecss %}
+
+{% endblock homecss %}
+
+
+{% block rightside %}
+
+
+<head>
+
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+</head>
+<BR>
+<div class="box">
+    <table border="1">
+         {% if obj %}
+<h1>Shortlisted Student List for {{comp_id}}</h1>
+    <th>Names of Students</th>
+
+{% for i in obj %}
+        <tr><td>
+            {{i.first_name}}
+
+            {{i.last_name}}</td>
+             <td><a href="/sendMail/{{i.id}}/{{comp_id.id}}"> <button>Send Mail</button></a></td></tr>
+            {% endfor %}
+{% else %}
+            <H1> None are shortlisted</H1>
+            {% endif %}
+
+
+
+
+
+
+    </table>
+</div>
+
+{% endblock rightside %}
+
+
+{% block footerc %}
+
+<div class="footer-copyright text-center py-3">© 2023 Copyright:
+  <br><a href="#">Company Details Form</a>
+</div>
+{% endblock footerc %}

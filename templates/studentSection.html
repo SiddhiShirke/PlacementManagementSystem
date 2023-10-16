@@ -1,0 +1,140 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="/studentDataForm"><button>Fill Your Data </button></a>
+<a href="/profile"><button>Profile </button></a>
+<a href=""><button>Apply for Drives </button></a>
+<a href=""><button>Applied Drives List</button></a>
+</body>
+</html> -->
+
+{% extends 'base.html' %}
+{% load static %}
+{% block pagetitle %}Campus Placement{% endblock pagetitle %}
+
+{% block homescript %}{% endblock homescript %}
+{% block homecss %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/form.css' %}">
+{% endblock homecss %}
+
+{% block portalname %}
+<a class="navbar-brand navbarText" href="/">Student Dashboard</a>
+{% endblock portalname %}
+
+{% block navbarbutton %}
+    <li class="nav-item mr-2">
+        <a href="#" class="nav-link navbarText">Welcome, {{user.username}}</a>
+    </li>
+    <li class="nav-item mr-2">
+        <a class="navlink btn btn-outline-light" href="/logout" >Logout</a>
+    </li>
+    <li class="nav-item mr-2">
+        <a class="navlink btn btn-outline-light" href="/updateprofile" >Profile</a>
+    </li>
+{% endblock navbarbutton %}
+
+<!-- Main body-portal -->
+{% block content %}
+{% if user.is_superuser %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mt-4">
+                <div class="jumbotron">
+                    <h1>Sorry Mr./Miss {{user.username}} You are not allowed Here</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+{% else %}
+
+<div class="container-fluid my-0" style="margin-top: 5px;">
+    <div class="row">
+        <!-- left side menu -->
+       <!-- <div  class="col-md-2 py-6 left-side-menu">
+            <nav class="navbar">
+                <ul class="navbar-nav border-bottom">                   
+                    <li class="nav-item">
+                        <a href="/updateprofile" class="nav-link navbarText">Edit Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/drivelist" class="nav-link navbarText">Apply for Drives</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/drivelistforStudent" class="nav-link navbarText">Applied Drives List</a>
+                    </li>   
+                </ul>
+
+            </nav>
+        </div>-->
+
+        <!-- right side menu -->
+        <div class="container right-side-menu">
+        {% block rightside %}
+            <div style="margin-top:40px" class="col-md-10 col-lg-10">                
+                <!-- 1st menu -->  
+                {% for message in messages %}
+                    <div class="alert alert-{{message.tags}} alert-dismissible fade show">
+                        <strong>{{ message }}.</strong>
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    </div>
+                    {% endfor %} 
+               
+                <!-- 2nd menu -->      
+                <div class="row dash-menu">
+                    <div class="col-md-4 col-lg-4">
+                        <img src="{% static 'images/job.png' %}">
+                        <p class="dash-stu-heading">Apply for Drives</p>
+                    </div>
+                    <div class="col-md-6 col-lg-6 menu-desc">
+                        <p class="dash-stu-descr"> Click here to see List of all matching jobs based on your Skills and eligibility</p>
+                        <div class="dash-stu-btn">
+                            <a class="btn btn-danger" href="/drivelist">Apply for Drives</a>
+                        </div>
+                    </div> 
+                </div>         
+                   
+                <div class="row dash-menu">
+                    <div class="col-md-4 col-lg-4">
+                        <img src="{% static 'images/job.png' %}">
+                        <p class="dash-stu-heading">Applied Drives List</p>
+                    </div>
+                    <div class="col-md-6 col-lg-6 menu-desc">
+                        <p class="dash-stu-descr"> Click here to see List of all matching jobs based on your Skills and eligibility</p>
+                        <div class="dash-stu-btn">
+                            <a class="btn btn-danger" href="/drivelistforStudent">Applied Drives List</a>
+                        </div>
+                    </div> 
+                </div>
+
+                 <div class="row dash-menu">
+                    <div class="col-md-4 col-lg-4">
+                        <img src="{% static 'images/job.png' %}">
+                        <p class="dash-stu-heading">Interested In Trainings</p>
+                    </div>
+                    <div class="col-md-6 col-lg-6 menu-desc">
+                        <p class="dash-stu-descr"> Click here to fill your interest domain in which you would like to get training in </p>
+                        <div class="dash-stu-btn">
+                            <a class="btn btn-danger" style="width:230px; " href="/training">Interested In Trainings</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        {% endblock rightside %}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% endblock content %}
+
+{% block footerc %}
+  <div class="footer-copyright text-center py-3">© 2023 Copyright:
+      <a href="#">{{user.email}}</a>
+  </div>
+{% endblock footerc %}

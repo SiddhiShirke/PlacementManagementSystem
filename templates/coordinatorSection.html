@@ -1,0 +1,164 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block pagetitle %}Coordinator Section{% endblock pagetitle %}
+
+{% block homescript %}{% endblock homescript %}
+
+{% block homecss %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/form.css' %}">
+{% endblock homecss %}
+
+{% block portalname %}
+<a class="navbar-brand navbarText" href="/coordinatorSection">Coordinator Dashboard</a>
+{% endblock portalname %}
+
+{% block navbarbutton %}
+
+<li class="nav-item mr-2">
+    <a href="#" class="nav-link navbarText">Welcome, {{user.username}}</a>
+</li>
+<li class="nav-item mr-2">
+    <a class="navlink btn btn-outline-light" href="/logout" >Logout</a>
+</li>
+
+{% endblock navbarbutton %}
+{% block content %}
+    {% if not user.is_superuser %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mt-4">
+                    <div class="jumbotron">
+                        <h1>Mr./Miss {{user.username}} You are not allowed Here! <br>It is Admin Portal</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+
+<!--LEft SIDE MENU-->
+<!--    -->
+<!--<div class="container-fluid my-0" style="margin-top: 5px;">-->
+<!--    <div class="row">-->
+<!--        &lt;!&ndash; left side menu &ndash;&gt;-->
+<!--        <div  class="col-md-2 py-6 left-side-menu">-->
+<!--            <nav class="navbar">-->
+<!--                <ul class="navbar-nav border-bottom">     -->
+<!--                    <li class="nav-item">-->
+<!--                        <a href="/comp" class="nav-link navbarText">Post Job Details</a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item">-->
+<!--                        <a href="/coordinatorAppliedStudentsList" class="nav-link navbarText">Applied Student List</a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item">-->
+<!--                        <a href="/selectcomp" class="nav-link navbarText">Company wise List</a>-->
+<!--                    </li>   -->
+<!--                </ul>-->
+
+<!--            </nav>-->
+<!--        </div>-->
+
+        <!-- right side menu -->
+
+<br>
+
+        <div class="container right-side-menu">
+        {% block rightside %}
+            <div style="margin-top:40px" class="col-md-10 col-lg-10">                
+                <!-- 1st menu -->  
+                {% for message in messages %}
+                    <div class="alert alert-success alert-dismissible fade show">
+                        <strong>{{ message }}.</strong>
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    </div>
+                {% endfor %} 
+
+                <div class="row dash-menu">
+                    <div class="col-md-4 col-lg-4">                    
+                        <img src="{% static 'images/appliedicon.png' %}">
+                        <p class="dash-stu-heading">Post Company Details</p>
+                    </div>
+                    <div class="col-md-6 col-lg-6 menu-desc">                   
+                        <p class="dash-stu-descr">Click here to post company details with all information
+                            Company name , Job Type ,Required Skills,Description etc..
+                        </p>
+                        <div class="dash-stu-btn">
+                            <a class="btn btn-danger" href="/comp">Post Jobs</a>
+                        </div>                     
+                    </div>
+                </div>    
+
+                <!-- 2nd menu -->      
+                <div class="row dash-menu">
+                    <div class="col-md-4 col-lg-4">
+                        <img src="{% static 'images/appliedjob.jpg' %}">
+                        <p class="dash-stu-heading">Applied Jobs Details</p>
+                    </div>
+                    <div class="col-md-6 col-lg-6 menu-desc">
+                        <p class="dash-stu-descr"> Click here to see List of Applied students with Company Name and Applied Date</p>
+                        <div class="dash-stu-btn">
+                            <a class="btn btn-danger" href="/coordinatorAppliedStudentsList">Applied List</a>
+                        </div>
+                    </div> 
+                </div>         
+
+                <!-- 3rd menu -->      
+                <div class="row dash-menu">
+                    <div class="col-md-4 col-lg-4">
+                        <img src="{% static 'images/appliedjob.jpg' %}">
+                        <p class="dash-stu-heading">Applied Drives List</p>
+                    </div>
+                    <div class="col-md-6 col-lg-6 menu-desc">
+                        <p class="dash-stu-descr"> Click here to select company and get to see all the students applied to that company</p>
+                        <div class="dash-stu-btn">
+                            <a class="btn btn-danger" href="/selectcomp">Company wise List</a>
+                        </div>
+                    </div> 
+                </div>
+
+                 <div class="row dash-menu">
+                    <div class="col-md-4 col-lg-4">
+                        <img src="{% static 'images/appliedicon.png' %}">
+                        <p class="dash-stu-heading">Shortlisted Student List</p>
+                    </div>
+                    <div class="col-md-6 col-lg-6 menu-desc">
+                        <p class="dash-stu-descr">
+                            Click here to see shortlisted students names according to their skills matching to the skills required by the drive.
+                            Send an email to the shortlisted student.
+                        </p>
+                        <div class="dash-stu-btn">
+                            <a class="btn btn-danger" style="width:200px;" href="/list">Shortlisted Students </a>
+                        </div>
+                    </div>
+                </div>
+
+
+                 <div class="row dash-menu">
+                    <div class="col-md-4 col-lg-4">
+                        <img src="{% static 'images/appliedicon.png' %}">
+                        <p class="dash-stu-heading">Training Report</p>
+                    </div>
+                    <div class="col-md-6 col-lg-6 menu-desc">
+                        <p class="dash-stu-descr">
+                            Click here to see how many students are interested in which domain and plan you training courses accordingly
+                        </p>
+                        <div class="dash-stu-btn">
+                            <a class="btn btn-danger" style="width:200px;" href="/trainingStatistic">Training Report</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        {% endblock rightside %}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% endblock content %}
+
+{% block footerc %}
+<div class="footer-copyright text-center py-4">© 2023 Copyright:
+      <a href="#">{{user.email}}</a>
+  </div>
+{% endblock footerc %}

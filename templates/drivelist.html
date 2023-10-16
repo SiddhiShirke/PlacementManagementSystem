@@ -1,0 +1,44 @@
+{% extends 'studentSection.html' %}
+{% load static %}
+<style>
+  label h2{
+        text-align: center;
+    }
+</style>
+{% block rightside %}
+
+<form method="POST">
+{% csrf_token %}
+    {% if data %}
+
+    {% for i in data %}
+  
+
+<div class="box">
+  <label><h2>{{i.company_name}}</h2></label> <br>
+    <label><b>Job type: </b></label>  {{i.job_type}}<br>
+    <label><b>Job Title: </b></label> {{i.job_title}}<br>
+    <label><b>Job Description: </b> </label><br> {{i.job_description}} <br>
+    <label><b>Location: </b></label> {{i.location}}<br>
+    <label><b>Skills Required: </b> </label>{{i.skills_required}}<br>
+    <label><b>Rounds Description:</b></label> {{i.rounds_description}}<br>
+    <label><b>Salary:</b></label> {{i.salary}}<br>
+    <label><b>Last Date Of Applying:</b></label> {{i.last_date_of_applying}}<br>
+    <label><b>Date Of Interview: </b></label> {{i.date_of_interview}}<br>
+    <label><b>Reporting Time: </b></label> {{i.reporting_time}} <br> 
+    <a href="/applied/{{i.id}}" class="btn btn-danger">Apply</a>
+</div>
+
+    {% endfor %}
+
+    {% else %}
+    <p> No Drives </p>
+{% endif%}
+
+</form>
+{% endblock rightside %}
+
+{% block footerc %}
+  <div class="footer-copyright text-center py-3">© 2023 Copyright:
+  </div>
+{% endblock footerc %}

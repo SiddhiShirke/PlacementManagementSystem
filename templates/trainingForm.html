@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block pagetitle %}DashBoard{% endblock pagetitle %}
+
+{% block portalname %}
+<a class="navbar-brand navbarText" href="/">Campus Placement </a>
+{% endblock %}
+
+{% block homecss %}
+<link rel="stylesheet" href="{% static 'css/form.css' %}">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4"></script>
+{% endblock homecss %}
+
+{% block content %}
+<div class="box">                   
+    {% if messages %}    
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags}} alert-dismissible fade show" role="alert">
+        <strong>{{message}}</strong> 
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        {% endfor %}
+    {% endif %}
+
+    <h1>Training Data</h1>
+    <h5>College will be oraganizing following trainings, interested students please fill this form</h5>
+    <table border="1">
+    <form method="POST">
+        {% csrf_token %}
+
+        {{form.as_table}}
+      <tr><td> <input type="submit" value="SUBMIT"></td></tr>
+    </form>
+    </table>
+   </div>
+{% endblock content %}
+
+{% block footerc %}
+  <div class="footer-copyright text-center py-4">© 2023 Copyright:
+    <!-- <br><a style="text-decoration: none" href="/signin">Login Page</a> -->
+  </div>
+{% endblock footerc %}

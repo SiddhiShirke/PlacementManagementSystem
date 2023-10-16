@@ -1,0 +1,41 @@
+{% extends 'coordinatorSection.html' %}
+{% load static %}
+
+
+{% block rightside %}
+<!-- <h1>Company List</h1> -->
+<div style="margin-top:40px" class="col-md-10 col-lg-10">                
+    <!-- 1st menu -->  
+    
+
+    {% if select %}
+        {% for i in select %}
+            <div class="row dash-menu">
+                <div class="col-md-4 col-lg-4">                    
+                    <p class="dash-stu-heading">{{i.company_name}}</p>
+                    <p>Job Type: {{i.job_type}}</p>
+                    <p>Job Role: {{i.job_title}}</p>
+                </div>
+                <div class="col-md-6 col-lg-6 menu-desc">  
+                    <h5>Job description:</h5>                 
+                    <p class="dash-stu-descr">{{i.job_description}}</p>
+                    <div class="dash-stu-btn" id="comp_list_div">
+                        <a class="comp_name" href="/displayComp/{{i.id}}">Check student Applied</a>
+                    </div>                     
+                </div>
+            </div>
+        {% endfor %}
+    {% else %} 
+    <div class="row dash-menu">
+        <h1>No Students Has Applied yet!!</h1>
+    <div>
+    {% endif %}
+</div>
+{% endblock rightside %}
+
+{% block footerc %}
+
+<div class="footer-copyright text-center py-3">© 2023 Copyright:
+      <a href="#">{{user.email}}</a>
+  </div>
+{% endblock footerc %}

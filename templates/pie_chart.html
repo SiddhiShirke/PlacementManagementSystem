@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block pagetitle %}DashBoard{% endblock pagetitle %}
+
+{% block portalname %}
+<a class="navbar-brand navbarText" href="/">Campus Placement </a>
+{% endblock %}
+
+{% block homecss %}
+<link rel="stylesheet" href="{% static 'css/form.css' %}">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4"></script>
+{% endblock homecss %}
+
+{% block content %}
+<body>
+    <h1>Statistics of Internship and Placement </h1>
+    <img src="data:image/png;base64,{{ chart_image }}" alt="Pie Chart"> <canvas id="chart"></canvas>
+
+</body>
+<script>
+
+var i = [];
+var j =[];
+{% for i,j in cname %}
+
+i.push('{{i}}')
+
+j.push({{j}})
+
+{% endfor %}
+
+console.log(i)
+console.log(j)
+
+
+let ctx = document.getElementById("chart").getContext("2d");
+let chart = new Chart(ctx, {
+  type: "pie",
+  data: {
+	 labels: i,
+	 datasets: [
+		{
+		  label: "Gross volume ($)",
+		  backgroundColor:" #990073",
+		  borderColor: "#417690",
+		  data: j
+		}
+	 ]
+  },
+  options: {
+	 title: {
+		text: "JOB ROLES",
+		display: true
+	 }
+  }
+});
+
+
+</script>
+
+
+{% endblock content %}
+
+{% block footerc %}
+  <div class="footer-copyright text-center py-3">© 2023 Copyright:
+    <br><a href="#">Registration Page</a>
+  </div>
+{% endblock footerc %}
